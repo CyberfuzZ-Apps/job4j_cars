@@ -13,5 +13,7 @@ CREATE TABLE selling
     model       VARCHAR(255) NOT NULL,
     body        VARCHAR(255) NOT NULL,
     sold        BOOLEAN      NOT NULL,
+    created     TIMESTAMP    NOT NULL,
+    photo       BOOLEAN      NOT NULL,
     user_id     INT          NOT NULL REFERENCES users (id)
 );

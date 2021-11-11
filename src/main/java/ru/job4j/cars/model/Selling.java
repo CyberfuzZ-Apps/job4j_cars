@@ -1,6 +1,7 @@
 package ru.job4j.cars.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -20,6 +21,8 @@ public class Selling {
     private String model;
     private String body;
     private boolean sold;
+    private Timestamp created;
+    private boolean photo;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -34,6 +37,17 @@ public class Selling {
         this.model = model;
         this.body = body;
         this.sold = sold;
+        this.user = user;
+    }
+
+    public Selling(String description, String model, String body,
+                   boolean sold, Timestamp created, boolean photo, User user) {
+        this.description = description;
+        this.model = model;
+        this.body = body;
+        this.sold = sold;
+        this.created = created;
+        this.photo = photo;
         this.user = user;
     }
 
@@ -85,6 +99,22 @@ public class Selling {
         this.user = user;
     }
 
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
+    }
+
+    public boolean isPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(boolean photo) {
+        this.photo = photo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -110,6 +140,8 @@ public class Selling {
                 + ", model='" + model + '\''
                 + ", body='" + body + '\''
                 + ", sold=" + sold
+                + ", created=" + created
+                + ", photo=" + photo
                 + ", user=" + user
                 + '}';
     }
