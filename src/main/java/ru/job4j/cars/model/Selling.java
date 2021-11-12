@@ -1,5 +1,7 @@
 package ru.job4j.cars.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -17,38 +19,36 @@ public class Selling {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String header;
     private String description;
-    private String model;
-    private String body;
-    private boolean sold;
+    private double price;
     private Timestamp created;
-    private boolean photo;
+    private boolean sold;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne
+    @JoinColumn(name = "car_id")
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    private Car car;
+
     public Selling() {
     }
 
-    public Selling(String description, String model, String body,
-                   boolean sold, User user) {
-        this.description = description;
-        this.model = model;
-        this.body = body;
-        this.sold = sold;
-        this.user = user;
-    }
-
-    public Selling(String description, String model, String body,
-                   boolean sold, Timestamp created, boolean photo, User user) {
-        this.description = description;
-        this.model = model;
-        this.body = body;
-        this.sold = sold;
-        this.created = created;
-        this.photo = photo;
-        this.user = user;
+    public static Selling of(String header, String description,
+                             double price, Timestamp created,
+                             boolean sold, User user, Car car) {
+        Selling selling = new Selling();
+        selling.header = header;
+        selling.description = description;
+        selling.price = price;
+        selling.created = created;
+        selling.sold = sold;
+        selling.user = user;
+        selling.car = car;
+        return selling;
     }
 
     public int getId() {
@@ -65,22 +65,6 @@ public class Selling {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
     }
 
     public boolean isSold() {
@@ -107,12 +91,28 @@ public class Selling {
         this.created = created;
     }
 
-    public boolean isPhoto() {
-        return photo;
+    public String getHeader() {
+        return header;
     }
 
-    public void setPhoto(boolean photo) {
-        this.photo = photo;
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     @Override
@@ -136,13 +136,13 @@ public class Selling {
     public String toString() {
         return "Selling{"
                 + "id=" + id
+                + ", header='" + header + '\''
                 + ", description='" + description + '\''
-                + ", model='" + model + '\''
-                + ", body='" + body + '\''
-                + ", sold=" + sold
+                + ", price=" + price
                 + ", created=" + created
-                + ", photo=" + photo
+                + ", sold=" + sold
                 + ", user=" + user
+                + ", car=" + car
                 + '}';
     }
 }
