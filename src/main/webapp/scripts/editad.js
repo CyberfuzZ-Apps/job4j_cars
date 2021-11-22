@@ -3,7 +3,7 @@ let sellingId = (new URL(document.location)).searchParams.get('id');
 $(document).ready(function () {
     $.ajax({
         type: "PUT",
-        url: "/cars/ad.do?sellingId=" + sellingId,
+        url: "/job4j_cars/ad.do?sellingId=" + sellingId,
         dataType: "json"
         /*
 
@@ -21,15 +21,14 @@ $(document).ready(function () {
         document.getElementById('color').setAttribute('value', data['car']['color']);
         document.getElementById('price').setAttribute('value', data['price']);
         document.getElementById('description').innerText = data['description'];
-        document.getElementById('photo').setAttribute('src', '/cars/download.do?sellingId=' + sellingId);
+        document.getElementById('photo').setAttribute('src', '/job4j_cars/download.do?sellingId=' + sellingId);
     }).fail(function () {
         console.log('ERROR LOAD PARAMETERS');
     })
 });
 
 function setUrl() {
-    console.log('ATTRS=' + document.getElementById('brand').getAttributeNames())
-    let url = '/cars/ad.do?sellingId=' + sellingId
+    let url = '/job4j_cars/ad.do?sellingId=' + sellingId
         + '&brand=' + document.getElementById('brand').value
         + '&model=' + document.getElementById('model').value
         + '&year=' + document.getElementById('year').value
@@ -46,9 +45,9 @@ function setUrl() {
 }
 
 function deletePhoto() {
-    window.location.href = '/cars/photo_delete.do?sellingId=' + sellingId;
+    window.location.href = '/job4j_cars/photo_delete.do?sellingId=' + sellingId;
 }
 
 function updatePhoto() {
-    window.location.href = '/cars/photo_upload.html?sellingId=' + sellingId;
+    window.location.href = '/job4j_cars/photo_upload.html?sellingId=' + sellingId;
 }

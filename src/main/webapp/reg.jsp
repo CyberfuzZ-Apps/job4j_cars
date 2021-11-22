@@ -44,10 +44,10 @@
     <div class="row">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="/cars/index.html">Главная</a>
+                <a class="nav-link" href="/job4j_cars/index.html">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cars/auth.do">Войти</a>
+                <a class="nav-link" href="/job4j_cars/auth.do">Войти</a>
             </li>
         </ul>
         <div class="card" style="width: 100%">
@@ -55,7 +55,7 @@
                 Новый пользователь
             </div>
             <div class="card-body">
-                <form action="/cars/reg.do" method="post">
+                <form action="/job4j_cars/reg.do" method="post">
                     <div class="form-group">
                         <label for="name">Имя</label>
                         <input type="text" class="form-control" id="name" name="name" title="Поле ИМЯ"

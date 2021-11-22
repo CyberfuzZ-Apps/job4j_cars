@@ -7,14 +7,14 @@ $(document).ready(getSellingList);
 function soldUpdate(sellingId) {
     let sold = document.getElementById('sold' + sellingId).value;
     if (sold) {
-        window.location.href='/cars/update.do?sellingId=' + sellingId;
+        window.location.href='/job4j_cars/update.do?sellingId=' + sellingId;
     }
 }
 
 function getUserName() {
     $.ajax({
         type: "POST",
-        url: "/cars/index.do",
+        url: "/job4j_cars/index.do",
         dataType: "json"
     }).done(function (user) {
         userEmail = user['email'];
@@ -28,7 +28,7 @@ function getSellingList() {
     let only_my_ads = $('#only_my_ads').is(':checked');
     $.ajax({
         type: "PUT",
-        url: "/cars/index.do?only_my_ads=" + only_my_ads,
+        url: "/job4j_cars/index.do?only_my_ads=" + only_my_ads,
         dataType: "json",
     }).done(function (data) {
         $('#table tr').empty();
@@ -53,7 +53,7 @@ function getSellingList() {
             let sold = '';
             if (!data[i]['sold']) {
                 sold = 'Продается';
-                header = '<a href="/cars/details.html?id=' + sellingId + '">' + header + '</a>';
+                header = '<a href="/job4j_cars/details.html?id=' + sellingId + '">' + header + '</a>';
             } else {
                 sold = 'Продано';
             }
@@ -67,9 +67,9 @@ function getSellingList() {
             let color = data[i]['car']['color'];
             let edit_delete = '';
             if (userEmail === data[i]['user']['email']) {
-                edit_delete = '<a href="/cars/ad/editad.html?id=' + sellingId + '">'
+                edit_delete = '<a href="/job4j_cars/ad/editad.html?id=' + sellingId + '">'
                     + '<i class="fa fa-edit mr-3"></i>' + '</a>'
-                    + '<a href="/cars/delete.do?id=' + sellingId + '">'
+                    + '<a href="/job4j_cars/delete.do?id=' + sellingId + '">'
                     + '<i class="fa fa-trash mr-3"></i>' + '</a>';
             }
             if (userEmail === data[i]['user']['email'] && !data[i]['sold']) {
@@ -81,7 +81,7 @@ function getSellingList() {
             $('#table tr:last').after(
                 '<tr>' +
                 '<td>' + edit_delete + '</td>' +
-                '<td>' + '<img src="/cars/download.do?sellingId=' + sellingId + '" ' +
+                '<td>' + '<img src="/job4j_cars/download.do?sellingId=' + sellingId + '" ' +
                 'width="100px" height="100px"/>' +
                 '</td>' +
                 '<td>' + header + '</td>' +

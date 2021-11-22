@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "POST",
-        url: "/cars/index.do",
+        url: "/job4j_cars/index.do",
         dataType: "json"
     }).done(function (user) {
         document.getElementById('username').innerHTML = user.name;

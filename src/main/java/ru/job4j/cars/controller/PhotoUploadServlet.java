@@ -54,6 +54,6 @@ public class PhotoUploadServlet extends HttpServlet {
         } catch (FileUploadException e) {
             LOG.error("File upload error! ", e);
         }
-        resp.sendRedirect("/cars/ad/editad.html?id=" + sellingId);
+        resp.sendRedirect(req.getContextPath() + "/ad/editad.html?id=" + sellingId);
     }
 }

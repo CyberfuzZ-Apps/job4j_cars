@@ -39,10 +39,10 @@
     <div class="row">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="/cars/index.html">Главная</a>
+                <a class="nav-link" href="/job4j_cars/index.html">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cars/reg.do">Регистрация</a>
+                <a class="nav-link" href="/job4j_cars/reg.do">Регистрация</a>
             </li>
         </ul>
         <div class="card" style="width: 100%">
@@ -50,7 +50,7 @@
                 Авторизация
             </div>
             <div class="card-body">
-                <form action="/cars/auth.do" method="post">
+                <form action="/job4j_cars/auth.do" method="post">
                     <div class="form-group">
                         <label for="email">Почта</label>
                         <input type="email" class="form-control" name="email" id="email" title="Поле ПОЧТА"

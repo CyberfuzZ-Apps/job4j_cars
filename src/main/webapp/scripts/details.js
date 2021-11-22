@@ -4,7 +4,7 @@ function getDetails() {
     let sellingId = (new URL(document.location)).searchParams.get('id');
     $.ajax({
         type: "POST",
-        url: "/cars/details.do",
+        url: "/job4j_cars/details.do",
         dataType: "json",
         data: {
             sellingId: sellingId
@@ -25,7 +25,7 @@ function getDetails() {
         document.getElementById('car_header').innerHTML = header + '&nbsp;';
         document.getElementById('price').innerHTML = price + ' руб.';
         document.getElementById('photo').setAttribute(
-            'src', '/cars/download.do?sellingId=' + sellingId);
+            'src', '/job4j_cars/download.do?sellingId=' + sellingId);
         document.getElementById('description').innerHTML = description;
         document.getElementById('created').innerHTML = created;
         document.getElementById('resources').innerHTML =
