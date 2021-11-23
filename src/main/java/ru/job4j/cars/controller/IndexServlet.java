@@ -4,8 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ru.job4j.cars.model.Selling;
 import ru.job4j.cars.model.User;
-import ru.job4j.cars.store.HbmStore;
-import ru.job4j.cars.store.Store;
+import ru.job4j.cars.store.SellingStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,15 +42,14 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Store store = HbmStore.instOf();
         List<Selling> sellingList;
         boolean onlyMy = Boolean.parseBoolean(req.getParameter("only_my_ads"));
         if (onlyMy) {
             HttpSession session = req.getSession();
             User user = (User) session.getAttribute("user");
-            sellingList = (List<Selling>) store.findSellingByUser(user);
+            sellingList = (List<Selling>) SellingStore.instOf().findSellingByUser(user);
         } else {
-            sellingList = (List<Selling>) store.findAllSelling();
+            sellingList = (List<Selling>) SellingStore.instOf().findAll();
         }
         String json = GSON.toJson(sellingList);
         jsonOut(resp, json);

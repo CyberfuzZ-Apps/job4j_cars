@@ -1,7 +1,7 @@
 package ru.job4j.cars.controller;
 
 import ru.job4j.cars.Config;
-import ru.job4j.cars.store.HbmStore;
+import ru.job4j.cars.store.SellingStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        HbmStore.instOf().deleteSelling(Integer.parseInt(id));
+        SellingStore.instOf().delete(Integer.parseInt(id));
         String path = Config.value("path");
         File file = new File(path + id);
         file.delete();

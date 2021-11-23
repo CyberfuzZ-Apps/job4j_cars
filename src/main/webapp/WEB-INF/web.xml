@@ -44,10 +44,6 @@
     <servlet-class>ru.job4j.cars.controller.DeleteServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>DetailsServlet</servlet-name>
-    <servlet-class>ru.job4j.cars.controller.DetailsServlet</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>PhotoUploadServlet</servlet-name>
     <servlet-class>ru.job4j.cars.controller.PhotoUploadServlet</servlet-class>
   </servlet>
@@ -87,10 +83,6 @@
   <servlet-mapping>
     <servlet-name>DeleteServlet</servlet-name>
     <url-pattern>/delete.do</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DetailsServlet</servlet-name>
-    <url-pattern>/details.do</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PhotoUploadServlet</servlet-name>

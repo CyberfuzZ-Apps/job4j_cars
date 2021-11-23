@@ -1,8 +1,7 @@
 package ru.job4j.cars.controller;
 
 import ru.job4j.cars.model.Selling;
-import ru.job4j.cars.store.HbmStore;
-import ru.job4j.cars.store.Store;
+import ru.job4j.cars.store.SellingStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +20,10 @@ public class UpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Store store = HbmStore.instOf();
         int sellingId = Integer.parseInt(req.getParameter("sellingId"));
-        Selling selling = store.findSellingById(sellingId);
+        Selling selling = SellingStore.instOf().findById(sellingId);
         selling.setSold(true);
-        store.saveSelling(selling);
+        SellingStore.instOf().save(selling);
         req.getRequestDispatcher("index.do").forward(req, resp);
     }
 }

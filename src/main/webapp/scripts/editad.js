@@ -5,9 +5,6 @@ $(document).ready(function () {
         type: "PUT",
         url: "/job4j_cars/ad.do?sellingId=" + sellingId,
         dataType: "json"
-        /*
-
-         */
     }).done(function (data) {
         document.getElementById('brand').setAttribute('value', data['car']['brand']);
         document.getElementById('model').setAttribute('value', data['car']['model']);

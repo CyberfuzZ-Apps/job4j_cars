@@ -3,12 +3,9 @@ getDetails();
 function getDetails() {
     let sellingId = (new URL(document.location)).searchParams.get('id');
     $.ajax({
-        type: "POST",
-        url: "/job4j_cars/details.do",
+        type: "PUT",
+        url: "/job4j_cars/ad.do?sellingId=" + sellingId,
         dataType: "json",
-        data: {
-            sellingId: sellingId
-        }
     }).done(function (data) {
         let sellingId = data['id'];
         let header = data['header'];

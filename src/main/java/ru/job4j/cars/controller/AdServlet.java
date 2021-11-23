@@ -2,13 +2,12 @@ package ru.job4j.cars.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import ru.job4j.cars.model.Car;
 import ru.job4j.cars.model.Selling;
 import ru.job4j.cars.model.User;
-import ru.job4j.cars.store.HbmStore;
+import ru.job4j.cars.store.CarStore;
+import ru.job4j.cars.store.SellingStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +44,7 @@ public class AdServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int sellingId = Integer.parseInt(req.getParameter("sellingId"));
-        Selling selling = HbmStore.instOf().findSellingById(sellingId);
+        Selling selling = SellingStore.instOf().findById(sellingId);
         String json = GSON.toJson(selling);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
@@ -71,7 +70,7 @@ public class AdServlet extends HttpServlet {
                 .buildWheel(req.getParameter("wheel"))
                 .buildColor(req.getParameter("color"))
                 .build();
-        HbmStore.instOf().saveCar(car);
+        CarStore.instOf().save(car);
         String header = brand + " " + model + ", " + year + " года.";
         Selling selling = Selling.of(
                 header,
@@ -84,7 +83,7 @@ public class AdServlet extends HttpServlet {
         if (sellingId != 0) {
             selling.setId(sellingId);
         }
-        HbmStore.instOf().saveSelling(selling);
+        SellingStore.instOf().save(selling);
         return selling;
     }
 

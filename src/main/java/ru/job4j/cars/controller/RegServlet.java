@@ -1,7 +1,7 @@
 package ru.job4j.cars.controller;
 
 import ru.job4j.cars.model.User;
-import ru.job4j.cars.store.HbmStore;
+import ru.job4j.cars.store.UserStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,8 +29,8 @@ public class RegServlet extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        if (HbmStore.instOf().findUserByEmail(email) == null) {
-            HbmStore.instOf().saveUser(new User(
+        if (UserStore.instOf().findByEmail(email) == null) {
+            UserStore.instOf().save(new User(
                     name,
                     email,
                     password
