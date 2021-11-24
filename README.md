@@ -1,5 +1,7 @@
 # Job4j_cars
 
+[![Java CI with Maven](https://github.com/CyberfuzZ-Apps/job4j_cars/actions/workflows/maven.yml/badge.svg)](https://github.com/CyberfuzZ-Apps/job4j_cars/actions/workflows/maven.yml)
+
 ## О проекте:
 
 Job4j_cars - вэб приложение, площадка для продажи машин. 
